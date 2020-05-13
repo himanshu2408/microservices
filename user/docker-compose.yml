@@ -1,0 +1,15 @@
+version: '2.0'
+services:
+  app:
+    container_name: microservices-user
+    restart: always
+    build: .
+    ports:
+      - '3000:3000'
+    links:
+      - mongodb
+  mongodb:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
