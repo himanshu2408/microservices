@@ -1,13 +1,12 @@
 {
-  "name": "user",
+  "name": "orders",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Himanshu",
+  "author": "himanshu",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
