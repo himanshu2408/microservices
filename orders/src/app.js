@@ -3,10 +3,10 @@ const app = express();
 const bodyParser = require("body-parser");
 const ordersDB = require("./seed");
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
-	res.json({ msg: "Hello World from orders" });
+	res.json({ msg: "Hello from the orders microservice" });
 });
 
 app.get("/orders", (req, res) => {

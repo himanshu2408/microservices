@@ -1,7 +1,7 @@
 version: '2.0'
 services:
     user:
-        container_name: microservices-user
+        container_name: user
         restart: always
         build: './user'
         ports:
@@ -10,11 +10,18 @@ services:
             - mongodb
 
     orders:
-        container_name: microservices-orders
+        container_name: orders
         restart: always
         build: './orders'
         ports:
             - '3001:3001'
+
+    aggreator:
+        container_name: aggregator
+        restart: always
+        build: './aggregator'
+        ports:
+            - '3002:3002'
 
     mongodb:
         container_name: mongo

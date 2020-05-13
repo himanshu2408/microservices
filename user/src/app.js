@@ -18,7 +18,7 @@ mongoose
 
 
 app.get("/", (req, res) => {
-    res.json({ msg: "hello from user microservice" });
+    res.json({ msg: "hello from the user microservice" });
 });
 
 app.get("/users", (req, res ) => {
@@ -28,7 +28,13 @@ app.get("/users", (req, res ) => {
 });
 
 app.get("/user/:id", (req, res) => {
-	res.json({ req: req.params.id });
+    var query = User.where({ _id: req.params.id });
+    query.findOne(function (err, user) {
+        if (err) res.err(err);
+        if (user) {
+            res.json({ user: user });
+        }
+    });
 });
 
 app.post('/user', (req, res) => {
