@@ -3,14 +3,14 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const User = require('./models/User');
-
+const { DB_URI } = require('./config');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // Connect to MongoDB
 mongoose
     .connect(
-        'mongodb://mongodb:27017/test',
+        DB_URI,
         { useNewUrlParser: true }
     )
     .then(() => console.log('MongoDB Connected'))
