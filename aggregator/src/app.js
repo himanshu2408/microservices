@@ -23,7 +23,20 @@ app.get("/orderdetails/:id", async (req, res) => {
         const userJson = await userResponse.json();
         const ordersJson = await ordersResponse.json();
 
-        res.json({ user: userJson, orders: ordersJson });
+        res.json({ userDetails: userJson, orders: ordersJson });
+    } catch (e) {
+        res.status(500).json(e);
+    }
+});
+
+app.get("/orders", async (req, res) => {
+    try {
+        const ordersPromise = fetch(endpoints.orders_URI);
+        const promises = [ordersPromise];
+        const [ordersResponse] = await Promise.all(promises);
+        const ordersJson = await ordersResponse.json();
+
+        res.json({ orders: ordersJson });
     } catch (e) {
         res.status(500).json(e);
     }

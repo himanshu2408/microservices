@@ -15,7 +15,7 @@ app.get("/orders", (req, res) => {
 
 app.get("/orders/:id", (req, res) => {
 	var orders = ordersDB.find(order => order.userId == req.params.id).orders;
-	res.json({ orders: orders });
+	res.json(orders);
 });
 
 module.exports = app;

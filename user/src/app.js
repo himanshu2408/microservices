@@ -4,8 +4,9 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const { DB_URI } = require('./config');
-app.use(bodyParser.urlencoded({ extended: false }));
 
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to MongoDB
 mongoose
@@ -21,7 +22,7 @@ app.get("/", (req, res) => {
     res.json({ msg: "hello from the user microservice" });
 });
 
-app.get("/users", (req, res ) => {
+app.get("/user", (req, res ) => {
     User.find()
         .then(users => res.json({ allUsers: users }))
         .catch(err => res.status(404).json({ msg: 'No items found' }));
@@ -36,6 +37,11 @@ app.get("/user/:id", (req, res) => {
         }
     });
 });
+
+//app.get("/user/:id", (req, res) => {
+//    var user = userDB.find(user => user._id == req.params.id);
+//    res.json(user);
+//});
 
 app.post('/user', (req, res) => {
     const newUser = new User({

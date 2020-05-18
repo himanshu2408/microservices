@@ -1,0 +1,23 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "aggregator"
+  namespace: "default"
+  labels:
+    app: "aggregator"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "aggregator"
+  template:
+    metadata:
+      labels:
+        app: "aggregator"
+    spec:
+      containers:
+      - name: "aggregator-sha256-1"
+        image: "gcr.io/microservices-277115/aggregator:v1.0"
+        ports:
+        - containerPort: 3002
+

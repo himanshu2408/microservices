@@ -1,0 +1,23 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "orders"
+  namespace: "default"
+  labels:
+    app: "orders"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "orders"
+  template:
+    metadata:
+      labels:
+        app: "orders"
+    spec:
+      containers:
+      - name: "orders-sha256-1"
+        image: "gcr.io/microservices-277115/orders:v1.0"
+        ports:
+        - containerPort: 3001
+
